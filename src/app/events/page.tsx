@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { Search } from "lucide-react";
@@ -12,6 +12,27 @@ import EventCardSkeleton from "@/components/EventCardSkeleton";
 const CATEGORIES = ["Hackathon", "Workshop", "Meetup", "Conference", "Webinar", "Career Fair", "Cultural"];
 
 export default function EventsPage() {
+  return (
+    <Suspense fallback={<EventsPageSkeleton />}>
+      <EventsContent />
+    </Suspense>
+  );
+}
+
+function EventsPageSkeleton() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <div className="h-8 w-48 skeleton mb-6" />
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <EventCardSkeleton key={i} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function EventsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
