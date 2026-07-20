@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-800;
+  font-family: var(--font-inter), var(--font-bengali), system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Use Bengali font whenever the browser detects Bengali characters
+   (so the rest of the Latin UI keeps the cleaner Inter face). */
+:lang(bn),
+[lang="bn"],
+.font-bengali {
+  font-family: var(--font-bengali), var(--font-inter), system-ui, sans-serif;
+}
+
+/* Consistent card style used everywhere (landing, listing, related events) */
+.card {
+  @apply bg-white border border-slate-200 rounded-card shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-5 py-2.5 rounded-xl font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white px-5 py-2.5 rounded-xl font-medium hover:bg-secondary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-outline {
+  @apply border border-slate-300 text-slate-700 px-5 py-2.5 rounded-xl font-medium hover:bg-slate-50 transition-colors;
+}
+
+.input {
+  @apply w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary;
+}
+
+.skeleton {
+  @apply animate-pulse bg-slate-200 rounded-lg;
+}
