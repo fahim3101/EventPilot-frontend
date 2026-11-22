@@ -3,6 +3,7 @@ node_modules/
 .next/
 out/
 dist/
+*.tsbuildinfo
 
 # env files (never commit secrets)
 .env
