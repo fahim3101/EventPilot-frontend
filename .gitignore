@@ -1,4 +1,14 @@
+# dependencies / build
 node_modules/
 .next/
-.env.local
+out/
+dist/
+
+# env files (never commit secrets)
+.env
+.env.*
+!.env.local.example
+
+# logs / OS
 *.log
+.DS_Store
